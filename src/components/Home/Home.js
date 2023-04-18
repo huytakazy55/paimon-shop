@@ -8,16 +8,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 export const Home = () => {
   return (
     <div className='home'>
-      Home Page
-      {
-        /*
         <Banner />
         <Skills />
         <Projects />
         <Contact />
         <Footer />
-        */
-      }
     </div>
   )
 }

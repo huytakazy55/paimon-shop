@@ -44,9 +44,9 @@ export const NavBar = () => {
             <Nav className="me-auto">
                 {/* <Nav.Link href="#home" className={activeLink === 'home' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('home')}>Home</Nav.Link> */}
                 <Link to='/' className={activeLink === 'home' ? 'active navbar-link nav-link' : 'navbar-link nav-link'} onClick={() => onUpdateActiveLink('home')}>Home</Link>
-                <Link to='/Musicplayer' className={activeLink === 'musicplayer' ? 'active navbar-link nav-link' : 'navbar-link nav-link'} onClick={() => onUpdateActiveLink('musicplayer')}>Musicplayer</Link>
-                <Link to='/Blog' className={activeLink === 'blog' ? 'active navbar-link nav-link' : 'navbar-link nav-link'} onClick={() => onUpdateActiveLink('blog')}>Blog</Link>
-                <Link to='/Shop' className={activeLink === 'shop' ? 'active navbar-link nav-link' : 'navbar-link nav-link'} onClick={() => onUpdateActiveLink('shop')}>Shop</Link>
+                <Link to='/musicplayer' className={activeLink === 'musicplayer' ? 'active navbar-link nav-link' : 'navbar-link nav-link'} onClick={() => onUpdateActiveLink('musicplayer')}>Musicplayer</Link>
+                <Link to='/blog' className={activeLink === 'blog' ? 'active navbar-link nav-link' : 'navbar-link nav-link'} onClick={() => onUpdateActiveLink('blog')}>Blog</Link>
+                <Link to='/shop' className={activeLink === 'shop' ? 'active navbar-link nav-link' : 'navbar-link nav-link'} onClick={() => onUpdateActiveLink('shop')}>Shop</Link>
             </Nav>
             <span className="navbar-text">
                 <div className="social-icon">
