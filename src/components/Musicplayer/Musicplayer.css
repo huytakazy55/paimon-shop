@@ -1,0 +1,858 @@
+/************ Custom Font ************/
+@font-face {
+	font-family: Centra;
+	src: url('../../assets/font/CentraNo2-Bold.ttf');
+	font-weight: 700;
+}
+@font-face {
+	font-family: Centra;
+	src: url('../../assets/font/CentraNo2-Medium.ttf');
+	font-weight: 500;
+}
+@font-face {
+	font-family: Centra;
+	src: url('../../assets/font/CentraNo2-Book.ttf');
+	font-weight: 400;
+}
+
+/************ Default Css ************/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 75px;
+}
+
+body {
+  font-weight: 400;
+  overflow-x: hidden;
+  position: relative;
+  background-color: #121212 !important;
+  color: #fff !important;
+  font-family: 'Centra', sans-serif !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  line-height: normal;
+}
+
+p, a, li, button, ul {
+  margin: 0;
+  padding: 0;
+  line-height: normal;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+button {
+  border: 0;
+  background-color: transparent;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+}
+
+@media (min-width:1700px) {
+	main .container {
+		max-width: 100%;
+		padding: 0 150px;
+	}
+}
+
+p.success {
+	color: green;
+}
+p.danger {
+	color: red;
+}
+/* ---------body-------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.musicPlayerMain {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+}
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url(../../assets/img/genshin-01.jpg) no-repeat center;
+    background-size: cover;
+    z-index: -1;
+}
+/* ---------Left Menu-------------- */
+.leftMenu {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 1;
+    margin-top: 6%;
+    width: 18%;
+    height: 94%;
+    background: transparent;
+    border-right: 2px solid #fff;
+    padding: 25px 30px;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.175,0.885,0.32,1.275);
+}
+.leftMenu .logoContainer {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.leftMenu .logoContainer i {
+    font-size: 30px;
+}
+.leftMenu .logoContainer i:nth-of-type(2) {
+    font-size: 20px !important;
+}
+.leftMenu .logoContainer h2 {
+    font-size: 20px;
+}
+.searchBox {
+    width: 100%;
+    height: 40px;
+    position: relative;
+    margin-top: 20px;
+    color: transparent;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+}
+.searchBox input {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: none;
+    background: rgba(0, 0, 0, 0.5);
+    padding-left: 40px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+}
+.searchBox .searchIcon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 37px;
+    font-size: 20px;
+}
+/* ========== Menu ========== */
+.MenuContainer {
+  margin: 15px -7px;
+}
+.MenuContainer .title{
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+.MenuContainer ul {
+  width: 100%;
+  padding: 0;
+}
+.MenuContainer ul li {
+  list-style: none;
+  margin: 10px 0;
+  width: 100%;
+  padding: 5px 0px;
+  position: relative; 
+}
+.MenuContainer ul li a {
+  text-decoration: none;
+  color: #ccc;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+.MenuContainer ul li a i {
+  font-size: 18px;
+  margin-right: 20px;
+}
+.MenuContainer ul li::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: -15px;
+  width: 0px;
+  height: 0%;
+  background: #49e12e;
+  border-radius: 5px;
+}
+.MenuContainer ul li span:hover {
+  background: transparent;
+  text-shadow: 5px 5px 8px #ff0000;
+}
+.MenuContainer ul li:hover::before,
+.MenuContainer ul li.active::before {
+  width: 5px;
+  height: 100%;
+  transition: 0.3s ease-in-out;
+}
+.MenuContainer ul li:hover a,
+.MenuContainer ul li.active a {
+  text-shadow: 8px 8px 10px #ff0000;
+  color: #fff;
+  transition: 0.3s;
+}
+/* ========= PlayList ========= */
+.playListContainer {
+  cursor: pointer;
+  margin: 15px 0;
+}
+.playListContainer .nameContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #848484;
+  margin-bottom: 10px;
+}
+.playListContainer .nameContainer p {
+  color: #fff;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.playListContainer .nameContainer i {
+  cursor: pointer;
+  color: #f1f1f1;
+}
+
+.playListContainer .playListScroll {
+  height: 140px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: relative;
+}
+.playListContainer .playListScroll::-webkit-scrollbar {
+  display: none;
+}
+.playListContainer .playListScroll .playList {
+  display: flex;
+  align-items: center;
+  color: #ccc;
+  margin: 10px 0;
+}
+.playListContainer .playListScroll .playList i {
+  font-size: 18px;
+}
+.playListContainer .playListScroll .playList .list {
+  margin-right: 15px;
+}
+
+.playListContainer .playListScroll .playList .trash {
+  margin-left: auto;
+}
+.playListContainer .playListScroll .playList  p {
+  font-size: 16px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: inline;
+}
+.playListContainer .playListScroll .playList:hover {
+  color: #fff;
+  text-shadow: 8px 8px 10px #ff0000;
+  transition: 0.3s;
+}
+/*======= TrackList ======= */
+.trackList {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px;
+}
+.trackList .top {
+  display: flex;
+  align-items: center;
+}
+.trackList .top img {
+  width: 50px !important;
+}
+.trackList .top .trackName {
+  margin-left: 10px;
+  color: #f1f1f1;
+  font-size: 14px;
+}
+.trackList .top .trackName .trackSpan {
+  display: block;
+  font-size: 12px;
+  color: #848484;
+}
+.trackList .bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  color: #848484;
+}
+.trackList .bottom i {
+  font-size: 18px;
+}
+.trackList .bottom i:hover {
+  color: #ccc;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.trackList .bottom input {
+  position: relative;
+  height: 5px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  appearance: none;
+}
+/* chrome and safari browser */
+.trackList .bottom input::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  background: #49e12e;
+  width: 50%;
+  height: 100%;
+  border-radius: 10px;
+  z-index: 2;
+  transition: width 250ms linear;
+}
+
+.trackList .bottom input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 20px;
+  border-radius: 10px;
+  border: 2px solid #000;
+  cursor: pointer;
+  position: relative;
+  margin: -2px 0 0 0;
+  z-index: 3;
+  box-sizing: border-box;
+  transition: all 250ms linear;
+  background: #f1f1f1;
+}
+@media screen and (max-width: 550px) {
+  .leftMenu {
+    min-width: 64px;
+    width: 64px;
+  }
+
+  .leftMenu .searchBox {
+    display: none;
+  }
+
+  .leftMenu .trackList {
+    display: none;
+  }
+
+  .leftMenu .playListContainer {
+    display: none;
+  }
+
+  .leftMenu .menuContainer ul li a span {
+    display: none;
+  }
+
+  .leftMenu .menuContainer ul li a i {
+    font-size: 24px;
+  }
+
+  .leftMenu .menuContainer ul li {
+    margin: 25px 0;
+  }
+}
+/* =========================================== Main Container css ================================= */
+.mainContainer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  height: 94%;
+  margin-top: 6%;
+  z-index: 1;
+  flex-grow: 1;
+  backdrop-filter: blur(5px);
+  background: rgba(34, 34, 34, 0.6);
+  transition: all 0.3 cubic-bezier(0.175,0.885,0.32,1.275);
+
+}
+.bannerMusicPlayer {
+  height: 300px;
+  position: relative;
+}
+.bannerMusicPlayer .bannerMusicPlayerImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* filter: grayscale(100); */
+}
+.bannerMusicPlayer .bottomLayer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5rem;
+  background-image: linear-gradient(transparent, rgba(0,0,0,0.9));
+}
+.bannerMusicPlayer .content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  z-index: 3;
+}
+.bannerMusicPlayer .content .breadCrump {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.bannerMusicPlayer .content .breadCrump p {
+  color: #ccc;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+.bannerMusicPlayer .content .breadCrump p span {
+  color: #fff;
+}
+.bannerMusicPlayer .content .breadCrump i {
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+}
+.bannerMusicPlayer .content .artist {
+  margin-top: auto;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.bannerMusicPlayer .content .artist .left .name {
+  display: flex;
+  align-items: center;
+}
+.bannerMusicPlayer .content .artist .left .name h2 {
+  font-size: 50px;
+}
+.bannerMusicPlayer .content .artist .left .name img {
+  width: 30px;
+  margin-left: 10px;
+}
+.bannerMusicPlayer .content .artist .left p {
+  font-size: 14px;
+}
+.bannerMusicPlayer .content .artist .left p i {
+  margin-right:  6px;
+}
+.bannerMusicPlayer .content .artist .left p span {
+  color: #fff;
+  margin-left: 5px;
+}
+.bannerMusicPlayer .content .artist .right {
+  display: flex;
+  align-items: center;
+}
+.bannerMusicPlayer .content .artist .right a{
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 10px 30px;
+  font-size: 16px;
+  color: #fff;
+  margin: 0px 15px;
+  border-radius: 100vh;
+  font-weight: bold;
+  text-align: center;
+}
+.bannerMusicPlayer .content .artist .right a i {
+  margin-right: 10px;
+  font-size: 12px;
+}
+.bannerMusicPlayer .content .artist .right a:nth-child(1) {
+  background: #39aa24;
+  margin-left: 0;
+}
+.bannerMusicPlayer .content .artist .right a:nth-child(2) {
+  background: rgba(0, 0, 0, 0.3);
+  margin-right: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.bannerMusicPlayer .content .artist .right a:hover {
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+}
+/* ============== menu list =========== */
+.mainContainer .menuList {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 25px;
+  background: rgba(0, 0, 0, 0.4);
+}
+.menuList ul {
+  display: flex;
+  align-items: center;
+}
+.menuList ul li {
+  list-style: none;
+  margin: 0 20px;
+  position: relative;
+}
+.menuList ul li a {
+  text-decoration: none;
+  color: #ccc;
+  font-size: 14px;
+  font-weight: bold;
+}
+.menuList ul li::before {
+  position: absolute;
+  content: "";
+  bottom: -20px;
+  left: 0px;
+  width: 0px;
+  height: 4px;
+  border-radius: 5px;
+  background: #fff;
+}
+.menuList ul li:hover::before,
+.menuList ul li.active::before {
+  width: 100%;
+  box-shadow: 0px 0px 20px #30ffee;
+  transition: width 0.3s cubic-bezier(0.175,0.885,0.32,1.275);
+}
+.menuList ul li:hover a,
+.menuList ul li.active a {
+  color: #fff;
+  transition: .3s;
+}
+.menuList p {
+  color: #ccc;
+  font-size:  14px;
+}
+.menuList p i {
+  margin-right: 6px;
+  font-size: 12px;
+}
+.menuList p span {
+  /* display: block; */
+  font-size: 12px;
+  text-align: center;
+  color: #ccc;
+  margin-left: 6px;
+}
+/* ===================== Main audio list =================== */
+.audioList {
+  padding: 10px 30px;
+}
+.audioList .title {
+  font-size: 18px;
+  color: #ccc;
+}
+.audioList .title span {
+  color: #ccc;
+  font-size: 12px;
+}
+.songsContainer {
+  height: 25vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.songsContainer::-webkit-scrollbar {
+  display: none;
+}
+.songs {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ccc;
+  width: 100%;
+  padding: 5px;
+}
+.songs:hover,
+.songs.active {
+  color: #fff;
+  transition: .3s;
+}
+.count {
+  margin-right: 10px;
+  width: 20px;
+}
+.song {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 5px;
+  cursor: pointer;
+}
+.song .imgBox {
+  width: 45px;
+  height: 45px;
+  min-width: 45px;
+  border-radius: .5rem;
+  background: #ccc;
+  margin-right: 10px;
+  overflow-x: hidden;
+}
+.song .imgBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.song .section {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.song .section .songName {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+}
+.song .section .hits {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.song .section .hits .hit,
+.song .section .hits .duration {
+  margin-right: 35px;
+}
+.song .section .hits .hit i,
+.song .section .hits .duration i {
+  font-size: 12px;
+  margin-right: 5px;
+}
+
+.song .section .hits .favourite i {
+  color: #49e12e;
+  filter: drop-shadow(0px 0px 4px #49e12e);
+}
+/* ============================================== Right Menu css ================================= */
+.rightMenu {
+  z-index: 1;
+  height: 94%;
+  margin-top: 6%;
+  width: 100px;
+  background: rgba(34, 34, 34, 0.6);
+  backdrop-filter: blur(5px);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3 cubic-bezier(0.175,0.885,0.32,1.275);
+}
+
+/* ================================================== Card ===================================== */
+.mainTracklist {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(7, 15, 15, 0.5);
+  overflow: hidden;
+  position: relative;
+  backdrop-filter: blur(3px);
+}
+.Card {
+  width: 100%;
+  overflow: hidden;
+  padding: 35px 15px;
+}
+.Card .nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.Card .img {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.Card .img img {
+  margin-top: 20px;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.Card .details {
+  width: 100%;
+  text-align: center;
+}
+.Card .details .title {
+  font-size: 13px;
+  margin-top: 30px;
+  height: 40px;
+}
+.Card .details .artist {
+  font-size: 11px;
+}
+.Card .progress {
+  margin-top: 15px;
+  height: 5px;
+}
+.Card .progress input {
+  width: 100%;
+}
+.Card .timer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #30ffee;
+}
+.Card .controls {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 25px;
+  margin-bottom: 25px;
+}
+.Card .controls .play {
+  width: 2.6rem;
+  height: 2.6rem;
+  background: linear-gradient(#fff 0%, #cecaca 100%);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.Card .controls .play::before {
+  content: '';
+  position: absolute;
+  height: 2rem;
+  width: 2rem;
+  border-radius: inherit;
+  background: linear-gradient(#fff 0%, #30ffee 100%);
+}
+.Card .controls .play i {
+  background: #fff;
+  background-clip: text;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color: transparent;
+  position: absolute;
+}
+.Card .controls .volume {
+  font-size: 17px;
+  width: 100%;
+  height: 10%;
+  background: #333;
+  position: absolute;
+  left: 0;
+  bottom: -10%;
+  border-radius: 10px;
+  border: 1px solid #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 19px;
+  z-index: 5;
+  transition: bottom .2s linear;
+}
+.Card .controls .volume span {
+  font-size: 13px;
+}
+.Card .controls .volume.show {
+  bottom: 0;
+}
+.Card .controls .volume input {
+  height: 3px;
+}
+/* ================================ ListSongCard ============================ */
+.listSongCard {
+  width: 100%;
+  position: absolute;
+  bottom: -65%;
+  left: 0;
+  background: #fff;
+  color:#000;
+  box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1);
+  transition: all .2s ease-out;
+  border-radius: 10px;
+  z-index: 10;
+}
+.listSongCard.show {
+  bottom: 0;
+}
+.listSongCard .header {
+  width: 100%;
+  font-size: 20px;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.listSongCard .header i {
+  font-size: 1.1rem;
+}
+.listSongCard .header > div{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.listSongCard .header > div span {
+  font-size: 1.25rem;
+  text-transform: capitalize;
+  color: #444;
+}
+.listSongCard ul {
+  width: 100%;
+  height: 200px;
+  overflow-y: scroll;
+}
+.listSongCard ul::-webkit-scrollbar {
+  width: 0px;
+}
+.listSongCard ul li {
+  width: 100%;
+  font-size: 14px;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+.listSongCard ul li:hover {
+  background: #30ffee;
+}
+.listSongCard ul li .row p {
+  color: #999;
+  font-size: 12px;
+}
+.listSongCard .duration {
+  font-size: 12px;
+}

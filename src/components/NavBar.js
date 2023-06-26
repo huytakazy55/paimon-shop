@@ -7,14 +7,43 @@ import navIcon1 from '../assets/img/nav-icon1.svg'
 import navIcon2 from '../assets/img/nav-icon2.svg'
 import navIcon3 from '../assets/img/nav-icon3.svg'
 import { Link, Outlet } from 'react-router-dom';
+import LoginService from './Services/LoginService';
+import { Login } from './LoginPage';
 
 export const NavBar = () => {
     const [activeLink, setactiveLink] = useState('home');
     const [scrolled, setScrolled] = useState(false);
     const [modalOpen, setModalOpen] = useState(false);
+    const [user, setUser] = useState(null);
+    const isLogin = localStorage.getItem('isLogin');
+    
+    useEffect(() =>{
+        if(isLogin) {
+            LoginService.profile()
+            .then((res) => {
+                setUser(res.data);
+            })
+            .catch((err) => {
+                
+                localStorage.clear();
+                console.log('loi')
+            })
+        }
+    }, [])
 
-    const close = () => setModalOpen(false);
-    const open = () => setModalOpen(true);
+    const closeModal = () => {
+        setModalOpen(false);
+    };
+
+    const open = () => {
+        setModalOpen(true);
+    }
+
+    const logout = () => {
+        LoginService.logout();
+        localStorage.clear();
+        window.location.reload();
+    }
 
     useEffect(() => {
         const onScroll = () => {
@@ -33,7 +62,7 @@ export const NavBar = () => {
     }
     return (
         <Navbar expand="lg" className={scrolled ? "Scrolled" : ""}>
-        <Container>
+        {/* <Container> */}
             <Navbar.Brand href="/">
                 <img src={logo} alt='Logo' />
             </Navbar.Brand>
@@ -54,16 +83,31 @@ export const NavBar = () => {
                     <a href="#"><img src={navIcon2} alt="" /></a>
                     <a href="#"><img src={navIcon3} alt="" /></a>
                 </div>
-                <motion.button 
+                {/* {isLogin==='true' ? (<>{user} <button onClick={logout}>Logout</button></>) : (<motion.button 
+                    whileTap={{scale: 0. }}
+                    className="save-button">
+                    <Link to='/Login' className={activeLink === 'login' ? 'active navbar-link nav-link' : 'navbar-link nav-link'} onClick={() => onUpdateActiveLink('login')}>
+                        LOGIN 
+                    </Link>
+                </motion.button>)}
+                {modalOpen && <Modal modalOpen={modalOpen} handleClose={closeModal} />}   */}
+                {isLogin==='true' ? (
+                    <>
+                        <h3 className='userNameLogin'>
+                            Xin chào: <span>{user}</span>
+                            <button onClick={logout}>Logout</button>
+                        </h3>
+                    </>
+                ) : (<motion.button
                     whileTap={{scale: 0. }}
                     className="save-button"
-                    onClick={() => (modalOpen ? close() : open())}>
+                    onClick={() => (modalOpen ? closeModal() : open())}>
                     LOGIN
-                </motion.button>
-                {modalOpen && <Modal modalOpen={modalOpen} handleClose={close} />}  
+                </motion.button>)}
+                {modalOpen && <Modal modalOpen={modalOpen} handleClose={closeModal} />}
             </span>
             </Navbar.Collapse>
-        </Container>
+        {/* </Container> */}
         </Navbar>
     )
 }

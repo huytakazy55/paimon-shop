@@ -68,24 +68,24 @@ export const Projects = () => {
                             </Nav>
                             <Tab.Content>
                                 <Tab.Pane eventKey="first">
-                                <Row>
-                                    {
-                                    projects.map((project, index) => {
-                                        return (
-                                        <ProjectCard
-                                            key={index}
-                                            {...project}
-                                            />
-                                        )
-                                    })
-                                    }
-                                </Row>
+                                    <Row>
+                                        {
+                                            projects.map((project, index) => {
+                                                return (
+                                                <ProjectCard
+                                                    key={index}
+                                                    {...project}
+                                                    />
+                                                )
+                                            })
+                                        }
+                                    </Row>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="section">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit</p>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="third">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
                                 </Tab.Pane>
                             </Tab.Content>
                         </Tab.Container>

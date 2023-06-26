@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Backdrop } from "../Backdrop";
-import { FormModal } from "./FormModal";
+import { FormModal } from "./FormModalLogin";
 
 const dropIn = {
     hidden: {
