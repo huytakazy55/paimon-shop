@@ -5,6 +5,7 @@ import Artist from "../../assets/img/artist.jpg";
 import Check from "../../assets/img/check.png";
 import { FaUser } from 'react-icons/fa';
 import AudioList from './AudioList';
+import TrackList from './TrackList';
 
 
 const MainContainer = () => {
@@ -43,6 +44,7 @@ const MainContainer = () => {
         <p><i><FaUser /></i>12.3M <span>Followers</span></p>
       </div>
       <AudioList />
+      <TrackList />
     </div>
   )
 }

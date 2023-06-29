@@ -10,8 +10,10 @@ function MusicplayerMain() {
     <div className='musicPlayerMain'>
       <LeftMenu />
       <MainContainer />
-      <RightMenu />
-      <div className='background'></div>
+      {/* <RightMenu /> */}
+      <div className='background'>
+       
+      </div>
     </div>
   )
 }

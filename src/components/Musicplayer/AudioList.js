@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaHeadphones, FaHeart, FaRegClock, FaRegHeart } from 'react-icons/fa';
 import { Songs } from './Songs';
-import Musicplayer from './MusicPlayer';
 const AudioList = () => {
     const [songs, setSongs] = useState(Songs);
     const [song, setSong] = useState(Songs[0].song);
@@ -76,7 +75,6 @@ const AudioList = () => {
                 ))
             }
         </div>
-        <Musicplayer />
     </div>
   )
 }

@@ -14,7 +14,7 @@
 	src: url('../../assets/font/CentraNo2-Book.ttf');
 	font-weight: 400;
 }
-
+@import url('https://fonts.googleapis.com/css2?family=Belanosima&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap');
 /************ Default Css ************/
 * {
   margin: 0;
@@ -398,7 +398,7 @@ p.danger {
 
 }
 .bannerMusicPlayer {
-  height: 300px;
+  height: 25vh;
   position: relative;
 }
 .bannerMusicPlayer .bannerMusicPlayerImg {
@@ -580,7 +580,7 @@ p.danger {
   font-size: 12px;
 }
 .songsContainer {
-  height: 25vh;
+  height: 20vh;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -674,37 +674,34 @@ p.danger {
 /* ================================================== Card ===================================== */
 .mainTracklist {
   width: 100%;
-  border-radius: 10px;
+  height: 35vh;
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 20px rgba(7, 15, 15, 0.5);
   overflow: hidden;
   position: relative;
-  backdrop-filter: blur(3px);
+}
+.mainTracklist .imgCard {
+  border-radius: 50%;
+  width: 90%;
+  height: 28vh;
+  /* border: 2px double white; */
+  margin: 15px 10px 10px 10px;
+  box-shadow: 0 0 5px gold, 0 0 7px #0000FF;
+}
+.mainTracklist .imgCard img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 }
 .Card {
-  width: 100%;
+  height: 40vh;
   overflow: hidden;
-  padding: 35px 15px;
+  padding: 5px 15px;
 }
 .Card .nav {
   width: 100%;
   display: flex;
   justify-content: space-between;
-}
-.Card .img {
-  width: 100%;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-.Card .img img {
-  margin-top: 20px;
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 50%;
 }
 .Card .details {
   width: 100%;
@@ -768,18 +765,18 @@ p.danger {
 }
 .Card .controls .volume {
   font-size: 17px;
-  width: 100%;
+  width: 20%;
   height: 10%;
-  background: #333;
+  background: transparent;
   position: absolute;
-  left: 0;
+  right: 0;
   bottom: -10%;
-  border-radius: 10px;
-  border: 1px solid #000;
+  border-radius: 5px;
+  border: 1px solid #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 19px;
+  padding: 15px;
   z-index: 5;
   transition: bottom .2s linear;
 }
@@ -787,7 +784,7 @@ p.danger {
   font-size: 13px;
 }
 .Card .controls .volume.show {
-  bottom: 0;
+  bottom: 30px;
 }
 .Card .controls .volume input {
   height: 3px;
@@ -796,7 +793,7 @@ p.danger {
 .listSongCard {
   width: 100%;
   position: absolute;
-  bottom: -65%;
+  bottom: -95%;
   left: 0;
   background: #fff;
   color:#000;
@@ -806,7 +803,7 @@ p.danger {
   z-index: 10;
 }
 .listSongCard.show {
-  bottom: 0;
+  bottom: -10%;
 }
 .listSongCard .header {
   width: 100%;
