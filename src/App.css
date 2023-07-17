@@ -1017,3 +1017,9 @@ nav.navbar .userNameLogin button:hover {
   letter-spacing: 0.5px;
   margin: 20px 0 30px
 }
+/* ================== searchweather ===================== */
+.banner .searchweather {
+  maxwidth: 500px;
+  margin: 20px auto;
+  background-color: #000;
+}

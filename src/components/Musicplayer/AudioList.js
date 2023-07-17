@@ -1,10 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { FaHeadphones, FaHeart, FaRegClock, FaRegHeart } from 'react-icons/fa';
 import { Songs } from './Songs';
+import musicsData from './assets/data'
 const AudioList = () => {
-    const [songs, setSongs] = useState(Songs);
-    const [song, setSong] = useState(Songs[0].song);
-    const [img, setImage] = useState(Songs[0].imgSrc);
+    // const [songs, setSongs] = useState(musics);
+    // const [song, setSong] = useState(musics[0].song);
+    // const [img, setImage] = useState(musics[0].imgSrc);
+    
+    const [songs, setSongs] = useState(null);
+    const [song, setSong] = useState(null);
+    const [img, setImage] = useState(null);
+    const [musics, setMusics] = useState([]);
+           
+    useEffect(() => {
+        (async() => {
+            const songList = (await musicsData()).data;
+            setSongs(songList);
+            setSong(songList[0].song);
+            setImage(songList[0].imgSrc);
+        })();
+    },[]);
 
     useEffect(() => {
         const songs = document.querySelectorAll(".songs");
@@ -16,38 +31,38 @@ const AudioList = () => {
         songs.forEach((n) => n.addEventListener("click", changeMenuActive));
       }, []);
     
-    const setMainSong = (songSrc, imgSrc) => {
-        setSong(songSrc);
-        setImage(imgSrc);
+    const setMainSong = (src, thumbnail) => {
+        setSong(src);
+        setImage(thumbnail);
     }
     const changeFavourite = (id) => {
-        Songs.forEach((song) => {
+        musics.forEach((song) => {
             if (song.id === id) {
                 song.favourite = !song.favourite;
             }
         });
-        setSongs([...Songs]);
+        setSongs([...musics]);
     }
   return (
     <div className='audioList'>
         <h2 className='title'>
-            The list <span>{Songs.length} songs</span>
+            The list <span>{musics.length} songs</span>
         </h2>
         <div className='songsContainer'>
             {
-                Songs && Songs.map((song, index) => (
+                Songs && musics.map((song, index) => (
                     <div className='songs' 
                         key={song.id} 
-                        onClick={() => setMainSong(song?.song, song?.imgSrc)}
+                        onClick={() => setMainSong(song?.title, song?.thumbnail)}
                     >
                         <div className='count'>#{index + 1}</div>
                         <div className='song'>
                             <div className='imgBox'>
-                                <img src={song?.imgSrc} alt='' />
+                                <img src={song?.thumbnail} alt='' />
                             </div>
                             <div className='section'>
                                 <p className='songName'>
-                                {song?.songName}
+                                {song?.title}
                                 <span className='spanArtist'>{song?.artist}</span>
                                 </p>
                                 <div className='hits'>

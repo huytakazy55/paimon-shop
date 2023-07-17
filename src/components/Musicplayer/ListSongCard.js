@@ -1,11 +1,19 @@
 import React, { useState, useEffect} from "react";
-import musics from './assets/data';
+import musicsData from './assets/data';
 import { BsMusicNoteList } from 'react-icons/bs';
 import { GrClose } from 'react-icons/gr';
 import { timer } from "./utils/timer";
 
 const ListSongCard = ({props: {open, setOpen, musicNumber, setMusicNumber}}) => {
+const [musics, setMusics] = useState([]);
+  
+useEffect(() => {
+    (async() => {
+        setMusics((await musicsData()).data);
+    })();
+}, []);
   return (
+    ( musics.length != 0 ? (
     <div className={`listSongCard ${open ? 'show' : ''}`}>
         <div className="header">
             <div>
@@ -29,6 +37,8 @@ const ListSongCard = ({props: {open, setOpen, musicNumber, setMusicNumber}}) => 
             }
         </ul>
     </div>
+    ) : <></>
+    )
   )
 }
 export default ListSongCard

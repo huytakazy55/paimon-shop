@@ -14,7 +14,7 @@
 	src: url('../../assets/font/CentraNo2-Book.ttf');
 	font-weight: 400;
 }
-@import url('https://fonts.googleapis.com/css2?family=Belanosima&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 /************ Default Css ************/
 * {
   margin: 0;
@@ -103,13 +103,13 @@ p.danger {
     background-size: cover;
     z-index: -1;
 }
+
 /* ---------Left Menu-------------- */
 .leftMenu {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     z-index: 1;
     margin-top: 6%;
     width: 18%;
-    height: 94%;
     background: transparent;
     border-right: 2px solid #fff;
     padding: 25px 30px;
@@ -246,7 +246,7 @@ p.danger {
 }
 
 .playListContainer .playListScroll {
-  height: 140px;
+  height: 35vh;
   overflow-x: hidden;
   overflow-y: scroll;
   position: relative;
@@ -392,8 +392,8 @@ p.danger {
   margin-top: 6%;
   z-index: 1;
   flex-grow: 1;
-  backdrop-filter: blur(5px);
-  background: rgba(34, 34, 34, 0.6);
+  backdrop-filter: blur(1px);
+  background: rgba(20, 5, 233, 0.219);
   transition: all 0.3 cubic-bezier(0.175,0.885,0.32,1.275);
 
 }
@@ -580,7 +580,7 @@ p.danger {
   font-size: 12px;
 }
 .songsContainer {
-  height: 20vh;
+  height: 34vh;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -672,42 +672,59 @@ p.danger {
 }
 
 /* ================================================== Card ===================================== */
+.TrackList {
+  position: fixed;
+  height: 12%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  z-index: 1;
+}
 .mainTracklist {
+  background: #140c61;
   width: 100%;
-  height: 35vh;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  height: 12%;
+  border-top: 2px solid rgba(255, 255, 255, 0.5);
   box-shadow: 0 0 20px rgba(7, 15, 15, 0.5);
   overflow: hidden;
-  position: relative;
+  position: fixed;
+  bottom: 0;
+}
+.mainTracklist .container {
+  padding: 2rem 0rem;
 }
 .mainTracklist .imgCard {
-  border-radius: 50%;
-  width: 90%;
-  height: 28vh;
+  border-radius: 5%;
+  width: 70%;
+  height: 25%;
   /* border: 2px double white; */
-  margin: 15px 10px 10px 10px;
+  margin: 10px auto;
   box-shadow: 0 0 5px gold, 0 0 7px #0000FF;
 }
 .mainTracklist .imgCard img {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
+  border-radius: 5%;
 }
 .Card {
   height: 40vh;
   overflow: hidden;
-  padding: 5px 15px;
+  padding: 10px 45px;
 }
 .Card .nav {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
-.Card .details {
+.details {
+  padding: 2em 0em;
   width: 100%;
+  margin: 9px auto;
   text-align: center;
 }
 .Card .details .title {
+  text-align: center;
   font-size: 13px;
   margin-top: 30px;
   height: 40px;
@@ -721,6 +738,8 @@ p.danger {
 }
 .Card .progress input {
   width: 100%;
+  background: #0207ffee;
+  color: #0207ffee;
 }
 .Card .timer {
   width: 100%;
@@ -732,78 +751,117 @@ p.danger {
 .Card .controls {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  margin-top: 20px;
   font-size: 25px;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
+  padding-left: 15rem;
+}
+.Card .controls i {
+  padding: 4px 20px;
+}
+.Card .controls .changeRepeat {
+  cursor: pointer;
 }
 .Card .controls .play {
   width: 2.6rem;
   height: 2.6rem;
-  background: linear-gradient(#fff 0%, #cecaca 100%);
+  /* background: linear-gradient(#fff 0%, #cecaca 100%); */
+  background: transparent;
+  border: 1px solid #fff;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
 }
-.Card .controls .play::before {
+/* .Card .controls .play::before {
   content: '';
   position: absolute;
   height: 2rem;
   width: 2rem;
   border-radius: inherit;
   background: linear-gradient(#fff 0%, #30ffee 100%);
-}
+} */
 .Card .controls .play i {
   background: #fff;
-  background-clip: text;
   -webkit-background-clip:text;
   -webkit-text-fill-color: transparent;
   position: absolute;
+  top: -2px;
 }
 .Card .controls .volume {
+  width: 300px;
+}
+.Card .controls .volume input {
+  width: 100px;
+  height: 3px;
+  position: absolute;
+  bottom: 27%;
+  -webkit-appearance: none;
+}
+.Card .controls .volume input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  height: 5px;
+  width: 16px;
+  border-radius: 3px;
+  background: #0207ffee;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: 0px;
+}
+.Card .controls .volume span {
+  font-size: 14px;
+  position: absolute;
+  bottom: 27%;
+}
+/* .Card .controls .volume {
   font-size: 17px;
-  width: 20%;
+  width: 15%;
   height: 10%;
   background: transparent;
   position: absolute;
-  right: 0;
-  bottom: -10%;
+  right: 11rem;
+  bottom: 1%;
   border-radius: 5px;
-  border: 1px solid #fff;
-  display: flex;
+  border: 1px solid #383838;
+  display: none;
   justify-content: space-between;
   align-items: center;
-  padding: 15px;
+  padding: 11px;
   z-index: 5;
-  transition: bottom .2s linear;
+  transition: bottom .7s linear;
+}
+.Card .controls .volume .volumefull {
+  padding: 0px;
 }
 .Card .controls .volume span {
   font-size: 13px;
-}
+} 
+
 .Card .controls .volume.show {
-  bottom: 30px;
+  display: flex;
 }
 .Card .controls .volume input {
   height: 3px;
 }
+*/
+
 /* ================================ ListSongCard ============================ */
 .listSongCard {
-  width: 100%;
-  position: absolute;
-  bottom: -95%;
-  left: 0;
-  background: #fff;
+  width: 50%;
+  position: fixed;
+  bottom: -50%;
+  right: 8em;
+  background: #30ffee;
   color:#000;
   box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1);
-  transition: all .2s ease-out;
+  transition: all .5s ease-out;
   border-radius: 10px;
-  z-index: 10;
+  z-index: 20;
 }
 .listSongCard.show {
-  bottom: -10%;
+  bottom: 0%;
 }
 .listSongCard .header {
   width: 100%;
@@ -852,4 +910,26 @@ p.danger {
 }
 .listSongCard .duration {
   font-size: 12px;
+}
+/* ============================== Upload File========================== */
+.uploadFile {
+  font-size: 15px;
+}
+.uploadFile input[type="file"] {
+  cursor: pointer;
+  width: 60%;
+  
+}
+.uploadFile button {
+  font-size: 15px;
+  border: 1px solid white;
+  color: #fff;
+  padding: 5px 5px;
+  border-radius: 5px;
+  width: 30%;
+}
+.uploadFile button span {
+  color: #fff;
+  padding-right: 10px;
+  font-size: 20px;
 }

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap"
 import { ArrowRightCircle, ChevronDoubleRight } from "react-bootstrap-icons";
 import headerImg from '../assets/img/nilou.png'
+import SearchWeather from './Weathercard/Searchweather'
 import Fade from "react-reveal/Fade";
 
 export const Banner = () => {
@@ -39,6 +40,9 @@ export const Banner = () => {
         }
 
     }
+    const handleOnSearchChange = (SearchData) => {
+        console.log(SearchData);
+    }
         return (
             <section className="banner" id="home">
                 <Container>
@@ -46,10 +50,9 @@ export const Banner = () => {
                         <Row className="align-items-center"> 
                             <Col xs={12} md={6} xl={7}>
                                 <span className="tagline">Welcome to my Paimon Shop</span>
-                                <h1>{`Hi I'm webdecoded  `}</h1>
-                                <h1 className="wrap"><ChevronDoubleRight size={45} />{text}</h1>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                                <button onClick={() => console.log('connect')}>Let's connect <ArrowRightCircle size={25} /></button>
+                                <div className="searchweather">
+                                    <SearchWeather onSearchChange={handleOnSearchChange}/>
+                                </div>
                             </Col>
                             <Col xs={12} md={6} xl={5}>
                                 <img src={headerImg} alt="Header img" />

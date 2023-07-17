@@ -3,18 +3,24 @@ import { Container, Row, Col } from "react-bootstrap";
 import { AiFillCaretDown } from "react-icons/ai";
 import { BsMusicNoteList, BsFillPlayFill, BsPauseCircle, BsFillVolumeMuteFill, BsRepeat, BsRepeat1, BsShuffle } from 'react-icons/bs';
 import { BiSkipPrevious, BiSkipNext, BiVolumeFull } from 'react-icons/bi';
-import musics from './assets/data';
+import musicsData from './assets/data';
 import { timer } from "./utils/timer";
 
 const Card = ({props: { musicNumber, setMusicNumber, setOpen }}) => {
     const [duration, setDuration] = useState(0);
     const [currentTime, setCurrentTime] = useState(0);
     const [play, setPlay] = useState(false);
-    const [showVolume, setShowVolume] = useState(0);
     const [volume, setVolume] = useState(50);
-    const [repeat, setRepeat] = useState(<BsRepeat/>);
-    const audioRef = useRef()
-   
+    const [repeat, setRepeat] = useState('repeat');
+    const audioRef = useRef();
+    const [musics, setMusics] = useState([]);
+
+    useEffect(() => {
+        (async() => {
+            setMusics((await musicsData()).data);
+        })();
+    }, []);
+
     function handleLoadStart(e){
         const src = e.nativeEvent.srcElement.src;
         const audio = new Audio(src);
@@ -52,28 +58,54 @@ const Card = ({props: { musicNumber, setMusicNumber, setOpen }}) => {
         })
     }
     function handleRepeat() {
-        setRepeat( value => {
-            switch (value) {
-                case '<BsRepeat/>' :
-                    console.log(value)
-                    return <BsRepeat1 />;
-                case (<BsRepeat1 />) :
-                    return <BsShuffle />;
-                default:
-                    return <BsRepeat />;
-            }
-        })
+        setRepeat((value) => {
+          switch (value) {
+            case 'repeat':
+              return 'repeat_one';
+            case 'repeat_one':
+              return 'shuffle';
+            default:
+              return 'repeat';
+          }
+        });
+      }
+    function EndedAudio(){
+        switch (repeat) {
+            case 'repeat_one':
+                return audioRef.current.play();
+            case 'shuffle':
+                return handleShuffle();
+            default:
+                return handleNextPrev(1);
+        }
     }
-    
+    function handleShuffle(){
+        const num = randomNumber();
+        setMusicNumber(num);
+    }
+    function randomNumber(){
+        const number = Math.floor(Math.random() * (musics.length - 1));
+        if(number === musicNumber)
+            return randomNumber();
+        return number;
+    }       
     useEffect(() => {
-        audioRef.current.volume = volume / 100;
+        if (audioRef.current) {
+            audioRef.current.volume = volume / 100;
+        }
     }, [volume])
     return (
-        <Container>
+        (musics.length != 0 ? (<div>
             <Row>
-                <Col md={4}>
+                <Col md={2}>
                     <div className="imgCard">
                         <img src={musics[musicNumber].thumbnail} alt />
+                    </div>
+                </Col>
+                <Col md={2}>
+                    <div className="details">
+                        <p className="title">{musics[musicNumber].title}</p>
+                        <p className="artist">{musics[musicNumber].artist}</p>
                     </div>
                 </Col>
                 <Col md={8} className="Card">
@@ -83,12 +115,6 @@ const Card = ({props: { musicNumber, setMusicNumber, setOpen }}) => {
                         <i className="material-icons" 
                         onClick={() => setOpen(prev => !prev)}><BsMusicNoteList /></i>
                     </div>
-
-                    
-                    <div className="details">
-                        <p className="title">{musics[musicNumber].title}</p>
-                        <p className="artist">{musics[musicNumber].artist}</p>
-                    </div>
                     <div className="progress">
                         <input type="range" min={0} max={duration} value={currentTime} onChange={e => changeCurrentTime(e)} />
                     </div>
@@ -97,32 +123,35 @@ const Card = ({props: { musicNumber, setMusicNumber, setOpen }}) => {
                         <span>{timer(duration)}</span>
                     </div>
                     <div className="controls">
-                        <i className="material-icons" onClick={handleRepeat}>{repeat}</i>
+                        <i className="material-icons changeRepeat" onClick={handleRepeat}>{repeat}</i>
                         <i className="material-icons" id="prev" onClick={() => handleNextPrev(-1)}><BiSkipPrevious /></i>
                         <div className="play" onClick={handlePlayingAudio}>
                             <i className="material-icons">{play ? <BsPauseCircle /> : <BsFillPlayFill /> }</i>
                         </div>
                         <i className="material-icons" id="next" onClick={() => handleNextPrev(1)}><BiSkipNext /></i>
-                        <i className="material-icons"
-                        onClick={() => setShowVolume(prev => !prev)}><BiVolumeFull /></i>
-
-                        <div className={`volume ${showVolume ? 'show' : ''}`}>
-                            <i className="material-icons" onClick={() => setVolume(v => v > 0 ? 0 : 100)}>
-                            {volume === 0 ? <BsFillVolumeMuteFill /> : <BiVolumeFull />}</i>
-                            <input type="range" min={0} max={100} value={volume} 
-                            onChange={e => setVolume(Number(e.target.value))} />
+                        {/* <i className="material-icons"
+                        onClick={() => setShowVolume(prev => !prev)}><BiVolumeFull /></i> */}
+                        <div className="volume">
+                            <i className="material-icons volumefull" onClick={() => setVolume(v => v > 0 ? 0 : 100)}>
+                                {volume === 0 ? <BsFillVolumeMuteFill /> : <BiVolumeFull />}</i>
+                                <input className="inputvolume" type="range" min={0} max={100} value={volume} 
+                                onChange={e => setVolume(Number(e.target.value))} />
                             <span>{volume}</span>
                         </div>
+                    </div> 
+                        <audio controls
+                            hidden ref={audioRef}
+                            src={musics[musicNumber].src}
+                            onLoadStart={handleLoadStart}
+                            onTimeUpdate={handleTimeUpdate}
+                            onEnded={EndedAudio}>
+                            <source />
+                        </audio>
                         
-                        
-
-                    </div>
-                        <audio src={musics[musicNumber].src} hidden ref={audioRef}
-                        onLoadStart={handleLoadStart} onTimeUpdate={handleTimeUpdate} />
                 </Col>
             </Row>
-        </Container>
-        
+        </div>) : <></>
+        )        
     )
 }
 

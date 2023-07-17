@@ -6,7 +6,8 @@ import Check from "../../assets/img/check.png";
 import { FaUser } from 'react-icons/fa';
 import AudioList from './AudioList';
 import TrackList from './TrackList';
-
+import UploadFile from './UploadFile';
+import musicsData from './assets/data';
 
 const MainContainer = () => {
   useEffect(() => {
@@ -43,8 +44,15 @@ const MainContainer = () => {
         </ul>
         <p><i><FaUser /></i>12.3M <span>Followers</span></p>
       </div>
-      <AudioList />
-      <TrackList />
+      {musicsData != null || musicsData.length != 0 ? 
+      (
+        <>
+        <AudioList />
+        <UploadFile />
+        </>
+        )
+        : (<></>)}
+      
     </div>
   )
 }
